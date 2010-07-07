@@ -10,9 +10,9 @@ if defined?(RAILS_ENV) && RAILS_ENV == 'test'
     alias_method_chain :method_missing, :create_valid
   end
   
-  Kernel.send(:include, CreateValid::GlobalHelpers)
+  Kernel.send(:include, ::CreateValid::GlobalHelpers)
   
   if File.exists?(RAILS_ROOT + '/test/factory.rb')
-    require RAILS_ROOT + '/test/factory'
+    ::CreateValid::KludgyEvalContext.new.instance_eval(File.read(RAILS_ROOT + '/test/factory.rb'))
   end
 end

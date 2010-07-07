@@ -121,4 +121,8 @@ module CreateValid
       ::CreateValid.register(model, attributes, &block)
     end
   end
+  
+  class KludgyEvalContext
+    include GlobalHelpers
+  end
 end
