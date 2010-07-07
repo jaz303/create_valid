@@ -1,6 +1,34 @@
 = create_valid
 
-Description goes here.
+
+== Using with shoulda
+
+`create_valid` supports shoulda. One caveat is that to use create_valid's magic methods
+from within a setup block one must first open a context.
+
+  class MyTest < ActiveSupport::TestCase
+    setup do
+      @user = build_valid_user # THIS WILL NOT WORK
+    end
+    
+    should "be invalid without a name" do
+      @user.name = ''
+      assert !@user.valid?
+    end
+  end
+  
+  class MyTest < ActiveSupport::TestCase
+    context "a valid user" do
+      setup do
+        @user = build_valid_user # THIS WILL NOT WORK
+      end
+    
+      should "be invalid without a name" do
+        @user.name = ''
+        assert !@user.valid?
+      end
+    end
+  end
 
 == Note on Patches/Pull Requests
  
