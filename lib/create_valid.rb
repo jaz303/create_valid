@@ -122,6 +122,23 @@ module CreateValid
     end
   end
   
+  module TestIntegration
+    def self.included(base)
+      base.send(:include, InstanceMethods)
+      base.alias_method_chain :method_missing, :create_valid
+    end
+    
+    module InstanceMethods
+      def method_missing_with_create_valid(method, *args)
+        if method.to_s =~ ::CreateValid::MAGIC_METHOD
+          ::CreateValid::Factory.new(self).send(method, *args)
+        else
+          method_missing_without_create_valid(method, *args)
+        end
+      end
+    end
+  end
+  
   class KludgyEvalContext
     include GlobalHelpers
   end
