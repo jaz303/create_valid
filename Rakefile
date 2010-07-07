@@ -6,11 +6,11 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "create_valid"
     gem.summary = %Q{An object for factory for Ruby/Rails, supporting Test::Unit}
-    gem.description = %Q{TODO: longer description of your gem}
+    # gem.description = %Q{TODO: longer description of your gem}
     gem.email = "jason@onehackoranother.com"
     gem.homepage = "http://github.com/jaz303/create_valid"
     gem.authors = ["Jason Frame"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
