@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "create_valid.gemspec",
      "lib/create_valid.rb",
      "rails/init.rb",
      "test/helper.rb",
