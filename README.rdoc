@@ -6,6 +6,7 @@
 `create_valid` supports shoulda. One caveat is that to use create_valid's magic methods
 from within a setup block one must first open a context.
 
+  # Wrong
   class MyTest < ActiveSupport::TestCase
     setup do
       @user = build_valid_user # THIS WILL NOT WORK
@@ -17,10 +18,11 @@ from within a setup block one must first open a context.
     end
   end
   
+  # Correct
   class MyTest < ActiveSupport::TestCase
     context "a valid user" do
       setup do
-        @user = build_valid_user # THIS WILL NOT WORK
+        @user = build_valid_user
       end
     
       should "be invalid without a name" do
