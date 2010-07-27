@@ -55,6 +55,7 @@ module CreateValid
         begin
           @stack << instance
           augment(instance, features)
+          merge_attributes(instance, extra_attributes)
           assert_validity(instance) if require_valid
           instance.save! if save
         ensure
